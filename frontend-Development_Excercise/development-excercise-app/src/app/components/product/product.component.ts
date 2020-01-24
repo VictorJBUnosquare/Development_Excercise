@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import {ProductDialogComponent} from '../../dialogs/product-dialog/product-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -34,42 +35,73 @@ export class ProductComponent{
     let product4 = { ID : 4, NAME: 'Product4', AGE: 12, PRICE:'$77.99', COMPANY:'MATEL'};
     let product5 = { ID : 5, NAME: 'Product5', AGE: 4, PRICE:'$12.50', COMPANY:'MATEL'};
     let product6 = { ID : 6, NAME: 'Product6', AGE: 18, PRICE:'$140.99.', COMPANY:'MATEL'};
-    let objeto = [];
-    objeto.push(product1);
-    objeto.push(product2);
-    objeto.push(product3);
-    objeto.push(product4);
-    objeto.push(product5);
-    objeto.push(product6);
-    this.dataSource.data = objeto;
+    let object1 = [];
+    object1.push(product1);
+    object1.push(product2);
+    object1.push(product3);
+    object1.push(product4);
+    object1.push(product5);
+    object1.push(product6);
+    this.dataSource.data = object1;
   }
 
   addProduct(){
     this.productDialog.closeAll();
-    let modalRol = 
+    let productModal = 
     this.productDialog.open(ProductDialogComponent,
       { 
         disableClose: true,
         width: '400px',
         data:{
-          claveRol: '',
-          nombreRol: '',
-          botonGuardar : false,
-          idRol: '54'
+          id: '0'
         }
       });
 
-      modalRol.afterClosed().subscribe(() => {
-        alert('Recargando productos');
+      productModal.afterClosed().subscribe(() => {
+        //alert('Reloading products');
     });
   }
 
   editProduct(id:any){
-    alert(id);
+    this.productDialog.closeAll();
+    let productModal = 
+    this.productDialog.open(ProductDialogComponent,
+      { 
+        disableClose: true,
+        width: '400px',
+        data:{
+          id: id
+        }
+      });
+
+      productModal.afterClosed().subscribe(() => {
+        //alert('Reloading products');
+    });
   }
 
   deleteProduct(id:any){
-    alert(id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this product!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'The product has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'The product was not deleted',
+          'error'
+        )
+      }
+    })
   }
 
   applyFilter(filterValue: string) {

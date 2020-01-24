@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, } from '@angular/core';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-dialog',
@@ -12,22 +13,11 @@ export class ProductDialogComponent implements OnInit {
   productForm: FormGroup;
 
   formisvalid:boolean;
-  claveRol = "";
-  nombreRol = "";
-  botonGuardar = true;
-  idRol = "";
+  id = "";
 
   constructor(private dialogRef:MatDialogRef<ProductDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data:any, private formBuilder : FormBuilder) { 
-
-                console.log('Imprimiendo data',data);
-
-                this.claveRol = "";
-                this.nombreRol = "";
-                this.claveRol = data.claveRol;
-                this.nombreRol = data.nombreRol;
-                this.botonGuardar = data.botonGuardar;
-                this.idRol = data.idRol;
+                this.id = data.id;
   }
 
   ngOnInit() {
@@ -49,11 +39,27 @@ export class ProductDialogComponent implements OnInit {
   }
 
   addProduct(){
-    console.log(this.productForm);
-    alert(this.productForm.valid);
-    alert(this.productForm.value.productName);
+    if(this.productForm.valid == true){
+      if(this.id != '0'){
+        Swal.fire(
+          'Updated!',
+          'Product udated succefully',
+          'success'
+        );
+  
+        this.dialogRef.close();
+      }
+      else{
+        Swal.fire(
+          'Added!',
+          'Product added succefully',
+          'success'
+        );
+  
+        this.dialogRef.close();
+      }
+    }
   }
-
 }
 
 
