@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import {ProductDialogComponent} from '../../dialogs/product-dialog/product-dialog.component';
 
 @Component({
   selector: 'app-product',
@@ -16,7 +17,7 @@ export class ProductComponent{
   dataSource: MatTableDataSource<any>;
   titleModal = "";
 
-  constructor(){
+  constructor(public productDialog : MatDialog){
     this.dataSource = new MatTableDataSource();
     this.loadProducts();
   }
@@ -44,7 +45,23 @@ export class ProductComponent{
   }
 
   addProduct(){
+    this.productDialog.closeAll();
+    let modalRol = 
+    this.productDialog.open(ProductDialogComponent,
+      { 
+        disableClose: true,
+        width: '400px',
+        data:{
+          claveRol: '',
+          nombreRol: '',
+          botonGuardar : false,
+          idRol: '54'
+        }
+      });
 
+      modalRol.afterClosed().subscribe(() => {
+        alert('Recargando productos');
+    });
   }
 
   editProduct(id:any){

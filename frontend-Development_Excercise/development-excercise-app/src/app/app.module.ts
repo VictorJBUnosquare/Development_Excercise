@@ -13,16 +13,19 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './components/product/product.component';
+import { ProductDialogComponent } from './dialogs/product-dialog/product-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent
+    ProductComponent,
+    ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,11 @@ import { ProductComponent } from './components/product/product.component';
     MatSelectModule,
     MatPaginatorModule,
     MatDialogModule,
+    ReactiveFormsModule,
     RouterModule.forRoot( ROUTES, {useHash: true})
+  ],
+  entryComponents: [
+    ProductDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
