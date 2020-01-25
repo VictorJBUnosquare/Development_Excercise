@@ -1,0 +1,8 @@
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\bin\Debug\netcoreapp3.1\DevelopmentExcercise.Models.deps.json
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\bin\Debug\netcoreapp3.1\DevelopmentExcercise.Models.dll
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\bin\Debug\netcoreapp3.1\DevelopmentExcercise.Models.pdb
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp3.1\DevelopmentExcercise.Models.csprojAssemblyReference.cache
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp3.1\DevelopmentExcercise.Models.AssemblyInfoInputs.cache
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp3.1\DevelopmentExcercise.Models.AssemblyInfo.cs
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp3.1\DevelopmentExcercise.Models.dll
+C:\Users\vjimenez\Documents\Development Excercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp3.1\DevelopmentExcercise.Models.pdb
