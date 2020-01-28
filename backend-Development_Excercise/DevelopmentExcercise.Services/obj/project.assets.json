@@ -765,6 +765,16 @@
           "bin/placeholder/DevelopmentExcercise.ApplicationContext.dll": {}
         }
       },
+      "DevelopmentExcercise.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/DevelopmentExcercise.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DevelopmentExcercise.Common.dll": {}
+        }
+      },
       "DevelopmentExcercise.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -3034,6 +3044,11 @@
       "path": "../DevelopmentExcercise.ApplicationContext/DevelopmentExcercise.ApplicationContext.csproj",
       "msbuildProject": "../DevelopmentExcercise.ApplicationContext/DevelopmentExcercise.ApplicationContext.csproj"
     },
+    "DevelopmentExcercise.Common/1.0.0": {
+      "type": "project",
+      "path": "../DevelopmentExcercise.Common/DevelopmentExcercise.Common.csproj",
+      "msbuildProject": "../DevelopmentExcercise.Common/DevelopmentExcercise.Common.csproj"
+    },
     "DevelopmentExcercise.Models/1.0.0": {
       "type": "project",
       "path": "../DevelopmentExcercise.Models/DevelopmentExcercise.Models.csproj",
@@ -3043,6 +3058,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "DevelopmentExcercise.ApplicationContext >= 1.0.0",
+      "DevelopmentExcercise.Common >= 1.0.0",
       "DevelopmentExcercise.Models >= 1.0.0",
       "Microsoft.NETCore.App >= 2.2.0"
     ]
@@ -3075,6 +3091,9 @@
           "projectReferences": {
             "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.ApplicationContext\\DevelopmentExcercise.ApplicationContext.csproj": {
               "projectPath": "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.ApplicationContext\\DevelopmentExcercise.ApplicationContext.csproj"
+            },
+            "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Common\\DevelopmentExcercise.Common.csproj": {
+              "projectPath": "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Common\\DevelopmentExcercise.Common.csproj"
             },
             "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj": {
               "projectPath": "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj"

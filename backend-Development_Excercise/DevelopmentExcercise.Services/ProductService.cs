@@ -1,5 +1,7 @@
 ﻿using DevelopmentExcercise.ApplicationContext;
+using DevelopmentExcercise.Common;
 using DevelopmentExcercise.Models.Domain;
+using DevelopmentExcercise.Services.ServiceBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,59 +10,65 @@ using System.Threading.Tasks;
 
 namespace DevelopmentExcercise.Services
 {
-    public interface IProductService : IRepository
+    public interface IProductService : IServiceBase<Product>
     {
     }
 
-    public class ProductService : IProductService
+    public class ProductService : Repository<Product>, IProductService
     {
-        DevelopmentExcerciseContext _context;
-
-        public ProductService(DevelopmentExcerciseContext context)
+        public ProductService(DevelopmentExcerciseContext context) : base(context)
         {
-            _context = context;
         }
-
-        public void AddProduct()
-        {
-            Product product = new Product();
-            product.Name = "Product1";
-            product.Price = Convert.ToDecimal(25.3);
-            product.Company = "Matel";
-            product.AgeRestriction = 14;
-
-            //var sr = context.Products.Add(product);
-        }
-
-        public Task CreateAsync<T>(T entity) where T : class
+        public ServiceResponse Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync<T>(T entity) where T : class
+        public IEnumerable<Product> GetList()
+        {
+            try
+            {
+                var products = GetAll();
+                return products;
+            }
+            catch (Exception e)
+            {
+                var methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                var sr = new ServiceOperationFailed("Failed to obtain the products", e, GetType().Name, methodName);
+                throw new ServiceException(sr.UserMessage);
+            }
+        }
+
+        public Product GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<T>> FindAll<T>() where T : class
+        public ServiceResponse Update(int id, Product entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<T> FindById<T>(long id) where T : class
+        ServiceResponse IServiceBase<Product>.Add(Product product)
         {
-            throw new NotImplementedException();
-        }
+            var sr = new ServiceResponse();
 
-        public void GetAll()
-        {
-            //DevelopmentExcerciseContext context = new DevelopmentExcerciseContext();
-            //var products = context.Products.ToList();
-        }
+            try
+            {
+                if (Any(p => p.Name == product.Name))
+                    return new ServiceEntityDuplicated("product");
 
-        public Task UpdateAsync<T>(T entity) where T : class
-        {
-            throw new NotImplementedException();
+                Add(product);
+                SaveChanges();
+            }
+            catch (Exception e)
+            {
+                var methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                sr = new ServiceOperationFailed("Failed try to add product", e, GetType().Name, methodName);
+                throw new ServiceException(sr.UserMessage);
+            }
+
+            return sr;
         }
     }
 }

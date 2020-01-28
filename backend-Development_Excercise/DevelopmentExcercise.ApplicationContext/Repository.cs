@@ -10,82 +10,70 @@ namespace DevelopmentExcercise.ApplicationContext
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        internal ApplicationContext context;
-        internal DbSet<TEntity> dbSet;
+        private DevelopmentExcerciseContext _context;
 
-        public BaseRepository(ApplicationContext context)
+        public Repository(DevelopmentExcerciseContext context)
         {
-            this.context = context;
-            this.dbSet = context.Set<TEntity>();
+            _context = context;
         }
 
-        public virtual IEnumerable<TEntity> GetWithRawSql(string query,
-            params object[] parameters)
+        public void Add(TEntity entity)
         {
-            return dbSet.SqlQuery(query, parameters).ToList();
+            _context.Set<TEntity>().Add(entity);
         }
 
-        public virtual IEnumerable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            string includeProperties = "")
+        public void AddRange(IEnumerable<TEntity> entities)
         {
-            IQueryable<TEntity> query = dbSet;
-
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            if (includeProperties != null)
-            {
-                foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(includeProperty);
-                }
-            }
-
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
+            throw new NotImplementedException();
         }
 
-        public virtual TEntity GetByID(object id)
+        public bool Any(Expression<Func<TEntity, bool>> predicate)
         {
-            return dbSet.Find(id);
+            return _context.Set<TEntity>().Any(predicate);
         }
 
-        public virtual void Insert(TEntity entity)
+        public int Count(Expression<Func<TEntity, bool>> predicate)
         {
-            dbSet.Add(entity);
+            throw new NotImplementedException();
         }
 
-        public virtual void Delete(object id)
+        public void Delete(TEntity entity)
         {
-            TEntity entityToDelete = dbSet.Find(id);
-            Delete(entityToDelete);
+            throw new NotImplementedException();
         }
 
-        public virtual void Delete(TEntity entityToDelete)
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            if (context.Entry(entityToDelete).State == EntityState.Detached)
-            {
-                dbSet.Attach(entityToDelete);
-            }
-            dbSet.Remove(entityToDelete);
+            throw new NotImplementedException();
         }
 
-        public virtual void Update(TEntity entityToUpdate)
+        public TEntity Get(int id)
         {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            return _context.Set<TEntity>().ToList();
+        }
+
+        public void Remove(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveRange(IEnumerable<TEntity> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using DevelopmentExcercise.Api.ViewModels;
 using DevelopmentExcercise.ApplicationContext;
 using DevelopmentExcercise.Common;
 using DevelopmentExcercise.Models.Domain;
@@ -15,33 +17,75 @@ namespace DevelopmentExcercise.Api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        IProductService _productService;
+        private readonly IMapper _mapper;
+        private readonly IProductService _productService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IMapper mapper)
         {
+            _mapper = mapper;
             _productService = productService;
         }
 
         [HttpPost]
         [Route("product")]
-        public ActionResult Add()
+        public ActionResult Add([FromBody] ProductViewModel productViewModel)
         {
-            var payload = new Payload<Product>();
+            var payLoad = new Payload<ProductViewModel>();
 
-            _productService.AddProduct();
+            try
+            {
+                Product product = _mapper.Map<Product>(productViewModel);
+                var sr = _productService.Add(product);
 
-            return Ok(payload);
+                if(sr.Success)
+                {
+                    productViewModel.Id = product.Id;
+                    payLoad.Data = productViewModel;
+                }
+
+                else
+                {
+                    payLoad.Code = 500;
+                    payLoad.Message = sr.UserMessage;
+                }
+            }
+
+            catch (ServiceException e)
+            {
+                payLoad.Code = 500;
+                payLoad.Message = e.Message;
+            }
+            catch (Exception e)
+            {
+                payLoad.Code = Convert.ToInt32(OperationError.InternalServerError);
+                payLoad.Message = "An error occurred";
+            }
+
+            return Ok(payLoad);
         }
 
         [HttpGet]
-        [Route("product")]
-        public ActionResult Get()
+        [Route("products")]
+        public ActionResult GetAll()
         {
-            var payload = new Payload<Product>();
+            var payLoad = new Payload<IEnumerable<ProductViewModel>>();
+            try
+            {
+                var products = _productService.GetList();
+                payLoad.Data = _mapper.Map<IEnumerable<ProductViewModel>>(products);
+            }
+            catch (ServiceException e)
+            {
+                payLoad.Code = Convert.ToInt32(OperationError.InternalServerError);
+                payLoad.Message = e.Message;
+            }
+            catch (Exception e)
+            {
+                payLoad.Code = Convert.ToInt32(OperationError.InternalServerError);
+                payLoad.Message = "An error occurred";
+            }
 
-            _productService.GetAll();
-
-            return Ok(payload);
+            return Ok(payLoad);
         }
     }
 }

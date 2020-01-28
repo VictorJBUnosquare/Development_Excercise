@@ -9,6 +9,7 @@
       "DevelopmentExcercise.Services/1.0.0": {
         "dependencies": {
           "DevelopmentExcercise.ApplicationContext": "1.0.0",
+          "DevelopmentExcercise.Common": "1.0.0",
           "DevelopmentExcercise.Models": "1.0.0"
         },
         "runtime": {
@@ -378,6 +379,11 @@
           "DevelopmentExcercise.ApplicationContext.dll": {}
         }
       },
+      "DevelopmentExcercise.Common/1.0.0": {
+        "runtime": {
+          "DevelopmentExcercise.Common.dll": {}
+        }
+      },
       "DevelopmentExcercise.Models/1.0.0": {
         "runtime": {
           "DevelopmentExcercise.Models.dll": {}
@@ -693,6 +699,11 @@
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
     },
     "DevelopmentExcercise.ApplicationContext/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DevelopmentExcercise.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -11,3 +11,5 @@ C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-
 C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Services\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Services.csproj.CopyComplete
 C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Services\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Services.dll
 C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Services\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Services.pdb
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Services\bin\Debug\netcoreapp2.2\DevelopmentExcercise.Common.dll
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Services\bin\Debug\netcoreapp2.2\DevelopmentExcercise.Common.pdb

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevelopmentExcercise.ApplicationContext\DevelopmentExcercise.ApplicationContext.csproj" />
+    <ProjectReference Include="..\DevelopmentExcercise.Common\DevelopmentExcercise.Common.csproj" />
     <ProjectReference Include="..\DevelopmentExcercise.Models\DevelopmentExcercise.Models.csproj" />
   </ItemGroup>
 
