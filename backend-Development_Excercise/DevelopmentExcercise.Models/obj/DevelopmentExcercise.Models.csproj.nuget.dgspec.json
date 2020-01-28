@@ -1,31 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vjimenez\\Documents\\Development Excercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj": {}
+    "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vjimenez\\Documents\\Development Excercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj": {
+    "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vjimenez\\Documents\\Development Excercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj",
+        "projectUniqueName": "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj",
         "projectName": "DevelopmentExcercise.Models",
-        "projectPath": "C:\\Users\\vjimenez\\Documents\\Development Excercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj",
-        "packagesPath": "C:\\Users\\vjimenez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vjimenez\\Documents\\Development Excercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\obj\\",
+        "projectPath": "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\DevelopmentExcercise.Models.csproj",
+        "packagesPath": "C:\\Users\\bofiadmin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bofiadmin\\Documents\\DevelopmentExcercise\\Development_Excercise\\backend-Development_Excercise\\DevelopmentExcercise.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vjimenez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bofiadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.2"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.2": {
             "projectReferences": {}
           }
         },
@@ -36,7 +36,15 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -47,11 +55,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DevelopmentExcercise.Api.ViewModels;
+using DevelopmentExcercise.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace DevelopmentExcercise.Api.Config
         public MappingProfile()
         {
             //Domain to ViewModel
-            //CreateMap<Product, ProductViewModel>();
+            CreateMap<Product, ProductViewModel>();
 
             //ViewModel to Domain
-            //CreateMap<ProductViewModel, Product>();
+            CreateMap<ProductViewModel, Product>();
         }
     }
 }

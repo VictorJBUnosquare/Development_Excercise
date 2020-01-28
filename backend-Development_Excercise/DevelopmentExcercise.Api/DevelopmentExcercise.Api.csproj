@@ -9,14 +9,13 @@
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\DevelopmentExcercise.Common\DevelopmentExcercise.Common.csproj" />
     <ProjectReference Include="..\DevelopmentExcercise.Models\DevelopmentExcercise.Models.csproj" />
+    <ProjectReference Include="..\DevelopmentExcercise.Services\DevelopmentExcercise.Services.csproj" />
   </ItemGroup>
 
 </Project>

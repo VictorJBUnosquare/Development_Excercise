@@ -1,0 +1,8 @@
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\bin\Debug\netcoreapp2.2\DevelopmentExcercise.Models.deps.json
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\bin\Debug\netcoreapp2.2\DevelopmentExcercise.Models.dll
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\bin\Debug\netcoreapp2.2\DevelopmentExcercise.Models.pdb
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Models.csprojAssemblyReference.cache
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Models.AssemblyInfoInputs.cache
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Models.AssemblyInfo.cs
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Models.dll
+C:\Users\bofiadmin\Documents\DevelopmentExcercise\Development_Excercise\backend-Development_Excercise\DevelopmentExcercise.Models\obj\Debug\netcoreapp2.2\DevelopmentExcercise.Models.pdb
