@@ -28,7 +28,7 @@ namespace DevelopmentExcercise.Common
         public ServiceEntityNotFound()
         {
             Success = false;
-            UserMessage = "Entity not fount";
+            UserMessage = "Entity not found";
         }
     }
 

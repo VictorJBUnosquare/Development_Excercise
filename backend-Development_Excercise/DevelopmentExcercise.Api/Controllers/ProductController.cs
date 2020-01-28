@@ -64,6 +64,99 @@ namespace DevelopmentExcercise.Api.Controllers
             return Ok(payLoad);
         }
 
+        [HttpPut]
+        [Route("product/{id}")]
+        public ActionResult Update(int id, [FromBody] ProductViewModel productViewModel)
+        {
+            var payLoad = new Payload<ProductViewModel>();
+
+            try
+            {
+                Product product = _mapper.Map<Product>(productViewModel);
+                var sr = _productService.Update(id, product);
+
+                if (sr.Success)
+                {
+                    productViewModel.Id = id;
+                    payLoad.Data = productViewModel;
+                }
+
+                else
+                {
+                    payLoad.Code = 500;
+                    payLoad.Message = sr.UserMessage;
+                }
+            }
+
+            catch (ServiceException e)
+            {
+                payLoad.Code = 500;
+                payLoad.Message = e.Message;
+            }
+            catch (Exception e)
+            {
+                payLoad.Code = Convert.ToInt32(OperationError.InternalServerError);
+                payLoad.Message = "An error occurred";
+            }
+
+            return Ok(payLoad);
+        }
+
+        [HttpDelete]
+        [Route("product/{id}")]
+        public ActionResult Delete(int id)
+        {
+            var payLoad = new Payload<ProductViewModel>();
+
+            try
+            {
+                var sr = _productService.Delete(id);
+
+                if(!sr.Success)
+                {
+                    payLoad.Code = 500;
+                    payLoad.Message = sr.UserMessage;
+                }
+            }
+
+            catch (ServiceException e)
+            {
+                payLoad.Code = 500;
+                payLoad.Message = e.Message;
+            }
+            catch (Exception e)
+            {
+                payLoad.Code = Convert.ToInt32(OperationError.InternalServerError);
+                payLoad.Message = "An error occurred";
+            }
+
+            return Ok(payLoad);
+        }
+
+        [HttpGet]
+        [Route("product/{id}")]
+        public ActionResult Get(int id)
+        {
+            var payLoad = new Payload<ProductViewModel>();
+            try
+            {
+                var product = _productService.GetById(id);
+                payLoad.Data = _mapper.Map<ProductViewModel>(product);
+            }
+            catch (ServiceException e)
+            {
+                payLoad.Code = Convert.ToInt32(OperationError.InternalServerError);
+                payLoad.Message = e.Message;
+            }
+            catch (Exception e)
+            {
+                payLoad.Code = Convert.ToInt32(OperationError.InternalServerError);
+                payLoad.Message = "An error occurred";
+            }
+
+            return Ok(payLoad);
+        }
+
         [HttpGet]
         [Route("products")]
         public ActionResult GetAll()

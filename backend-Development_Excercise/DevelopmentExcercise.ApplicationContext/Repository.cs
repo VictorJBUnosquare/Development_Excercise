@@ -49,7 +49,7 @@ namespace DevelopmentExcercise.ApplicationContext
 
         public TEntity Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -59,7 +59,7 @@ namespace DevelopmentExcercise.ApplicationContext
 
         public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            _context.Set<TEntity>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)

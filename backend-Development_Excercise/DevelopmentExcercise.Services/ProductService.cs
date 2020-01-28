@@ -21,7 +21,26 @@ namespace DevelopmentExcercise.Services
         }
         public ServiceResponse Delete(int id)
         {
-            throw new NotImplementedException();
+            var sr = new ServiceResponse();
+
+            try
+            {
+                var product = GetById(id);
+
+                if (product == null)
+                    return new ServiceEntityNotFound();
+
+                Remove(product);
+                SaveChanges();
+            }
+            catch (Exception e)
+            {
+                var methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                sr = new ServiceOperationFailed("Failed to obtain the products", e, GetType().Name, methodName);
+                throw new ServiceException(sr.UserMessage);
+            }
+
+            return sr;
         }
 
         public IEnumerable<Product> GetList()
@@ -41,12 +60,45 @@ namespace DevelopmentExcercise.Services
 
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var product = Get(id);
+                return product;
+            }
+            catch (Exception e)
+            {
+                var methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                var sr = new ServiceOperationFailed("Failed to obtain the products", e, GetType().Name, methodName);
+                throw new ServiceException(sr.UserMessage);
+            }
         }
 
-        public ServiceResponse Update(int id, Product entity)
+        public ServiceResponse Update(int id, Product product)
         {
-            throw new NotImplementedException();
+            var sr = new ServiceResponse();
+
+            try
+            {
+                var currentProduct = Get(id);
+
+                if (product == null)
+                    return new ServiceEntityNotFound();
+
+                currentProduct.Name = product.Name;
+                currentProduct.Description = product.Description;
+                currentProduct.Company = product.Company;
+                currentProduct.AgeRestriction = product.AgeRestriction;
+                currentProduct.Price = product.Price;
+                SaveChanges();
+            }
+            catch (Exception e)
+            {
+                var methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                sr = new ServiceOperationFailed("Failed to obtain the products", e, GetType().Name, methodName);
+                throw new ServiceException(sr.UserMessage);
+            }
+
+            return sr;
         }
 
         ServiceResponse IServiceBase<Product>.Add(Product product)
