@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DevelopmentExcercise.Api.Config;
 using DevelopmentExcercise.ApplicationContext;
+using DevelopmentExcercise.Models.Domain;
 using DevelopmentExcercise.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +22,8 @@ namespace DevelopmentExcercise.Api
 {
     public class Startup
     {
+        readonly string allowAllOrigins = "AllowAllOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +34,18 @@ namespace DevelopmentExcercise.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(allowAllOrigins,
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
+
             services.AddDbContext<DevelopmentExcerciseContext>(opt => opt.UseInMemoryDatabase());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -59,6 +74,7 @@ namespace DevelopmentExcercise.Api
                 app.UseHsts();
             }
 
+            app.UseCors(allowAllOrigins);
             app.UseHttpsRedirection();
             app.UseMvc();
         }

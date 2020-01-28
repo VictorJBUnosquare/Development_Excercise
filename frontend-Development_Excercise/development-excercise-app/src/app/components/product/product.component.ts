@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import {ProductDialogComponent} from '../../dialogs/product-dialog/product-dialog.component';
+import {ProductService} from '../../services/product.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,7 @@ export class ProductComponent{
   dataSource: MatTableDataSource<any>;
   titleModal = "";
 
-  constructor(public productDialog : MatDialog){
+  constructor(public productDialog : MatDialog, public productService : ProductService){
     this.dataSource = new MatTableDataSource();
     this.loadProducts();
   }
@@ -29,20 +30,18 @@ export class ProductComponent{
   }
 
   loadProducts(){
-    let product1 = { ID : 1, NAME: 'Product1', AGE: 12, PRICE:'$25.99', COMPANY:'MATEL'};
-    let product2 = { ID : 2, NAME: 'Product2', AGE: 4, PRICE:'$76.50', COMPANY:'MATEL'};
-    let product3 = { ID : 3, NAME: 'Product3', AGE: 18, PRICE:'$99.99.', COMPANY:'MATEL'};
-    let product4 = { ID : 4, NAME: 'Product4', AGE: 12, PRICE:'$77.99', COMPANY:'MATEL'};
-    let product5 = { ID : 5, NAME: 'Product5', AGE: 4, PRICE:'$12.50', COMPANY:'MATEL'};
-    let product6 = { ID : 6, NAME: 'Product6', AGE: 18, PRICE:'$140.99.', COMPANY:'MATEL'};
-    let object1 = [];
-    object1.push(product1);
-    object1.push(product2);
-    object1.push(product3);
-    object1.push(product4);
-    object1.push(product5);
-    object1.push(product6);
-    this.dataSource.data = object1;
+    this.productService.getProducts().subscribe(response =>{
+      if(response.code === 200){
+        this.dataSource.data = response.data;
+      }
+      else {
+        Swal.fire(
+          'Error',
+          'Error loading the products',
+          'error'
+        )
+      }
+    })
   }
 
   addProduct(){
@@ -53,30 +52,48 @@ export class ProductComponent{
         disableClose: true,
         width: '400px',
         data:{
-          id: '0'
+          id: 0
         }
       });
 
       productModal.afterClosed().subscribe(() => {
-        //alert('Reloading products');
+        this.loadProducts();
     });
   }
 
   editProduct(id:any){
     this.productDialog.closeAll();
-    let productModal = 
-    this.productDialog.open(ProductDialogComponent,
-      { 
-        disableClose: true,
-        width: '400px',
-        data:{
-          id: id
-        }
-      });
 
-      productModal.afterClosed().subscribe(() => {
-        //alert('Reloading products');
-    });
+    this.productService.getProduct(id).subscribe(response =>{
+      if(response.code === 200){
+
+        let productModal = 
+        this.productDialog.open(ProductDialogComponent,
+          { 
+            disableClose: true,
+            width: '400px',
+            data:{
+              id: id,
+              name :  response.data.name,
+              description : response.data.description,
+              ageRestriction : response.data.ageRestriction,
+              company : response.data.company,
+              price : response.data.price
+            }
+          });
+    
+          productModal.afterClosed().subscribe(() => {
+            this.loadProducts();
+        });
+      }
+      else {
+        Swal.fire(
+          'Error',
+          'Error getting the product',
+          'error'
+        )
+      }
+    })
   }
 
   deleteProduct(id:any){
@@ -89,12 +106,26 @@ export class ProductComponent{
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
-        Swal.fire(
-          'Deleted!',
-          'The product has been deleted.',
-          'success'
-        )
+        this.productService.deleteProduct(id).subscribe(response =>{
+          if(response.code === 200){
+            this.loadProducts();
+            Swal.fire(
+              'Deleted!',
+              'The product has been deleted.',
+              'success'
+            )
+          }
+          else{
+            this.loadProducts();
+            Swal.fire(
+              'Error',
+              'An error occurred and the product was not deleted',
+              'error'
+            )
+          }
+        });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
+        this.loadProducts();
         Swal.fire(
           'Cancelled',
           'The product was not deleted',

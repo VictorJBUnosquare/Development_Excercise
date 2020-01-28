@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
+import { NumberDirective } from '../app/directives/numbers-only.directive';
 
 
 //Material modules
@@ -25,10 +27,12 @@ import { ProductDialogComponent } from './dialogs/product-dialog/product-dialog.
   declarations: [
     AppComponent,
     ProductComponent,
-    ProductDialogComponent
+    ProductDialogComponent,
+    NumberDirective
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatFormFieldModule,

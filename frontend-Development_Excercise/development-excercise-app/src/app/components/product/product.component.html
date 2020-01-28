@@ -21,37 +21,37 @@
       
       <ng-container matColumnDef="ID">
         <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.ID}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
       
       <ng-container matColumnDef="NAME">
         <mat-header-cell *matHeaderCellDef>NAME</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.NAME}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="AGE">
         <mat-header-cell *matHeaderCellDef>AGE</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.AGE}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.ageRestriction}} </mat-cell>
       </ng-container>
       
       <ng-container matColumnDef="PRICE">
         <mat-header-cell *matHeaderCellDef>PRICE</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.PRICE}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="COMPANY">
         <mat-header-cell *matHeaderCellDef>COMPANY</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.COMPANY}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.company}} </mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="ACTIONS">
         <mat-header-cell *matHeaderCellDef>ACTIONS</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Acciones">
-          <button type="button" (click)="editProduct(row.ID)"  class="btn btn-primary mr-1 float-none">
+          <button type="button" (click)="editProduct(row.id)"  class="btn btn-primary mr-1 float-none">
             <i class="cui-trash"></i>
             <mat-icon>edit</mat-icon>
           </button>
-          <button type="button" (click)="deleteProduct(row.ID)" class="btn btn-primary mr-1 float-none">
+          <button type="button" (click)="deleteProduct(row.id)" class="btn btn-primary mr-1 float-none">
             <mat-icon>delete</mat-icon>
           </button>
           </mat-cell>

@@ -9,6 +9,8 @@ namespace DevelopmentExcercise.ApplicationContext
 {
     public class DevelopmentExcerciseContext : DbContext
     {
+        public DbSet<Product> Products { get; set; }
+
         public DevelopmentExcerciseContext(DbContextOptions<DevelopmentExcerciseContext> options) : base(options)
         {
         }
@@ -16,10 +18,7 @@ namespace DevelopmentExcercise.ApplicationContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
-
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<Product> Products { get; set; }
     }
 }

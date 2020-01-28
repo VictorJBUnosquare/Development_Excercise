@@ -84,7 +84,6 @@ namespace DevelopmentExcercise.Common
         }
     }
 
-    //Just for difference between service and controller exception
     public class ServiceException : Exception
     {
         public ServiceException(string userMessage) : base(userMessage)
