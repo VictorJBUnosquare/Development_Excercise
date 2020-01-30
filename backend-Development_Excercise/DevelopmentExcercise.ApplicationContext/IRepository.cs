@@ -10,6 +10,7 @@ namespace DevelopmentExcercise.ApplicationContext
     public interface IRepository<TEntity> where TEntity : class
     {
         TEntity Get(int id);
+        TEntity GetFirst();
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate);

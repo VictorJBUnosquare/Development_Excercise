@@ -122,5 +122,20 @@ namespace DevelopmentExcercise.Services
 
             return sr;
         }
+
+        public Product GetfFirst()
+        {
+            try
+            {
+                var product = GetFirst();
+                return product;
+            }
+            catch (Exception e)
+            {
+                var methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                var sr = new ServiceOperationFailed("Failed to obtain the products", e, GetType().Name, methodName);
+                throw new ServiceException(sr.UserMessage);
+            }
+        }
     }
 }

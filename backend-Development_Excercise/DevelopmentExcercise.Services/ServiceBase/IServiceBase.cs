@@ -11,6 +11,7 @@ namespace DevelopmentExcercise.Services.ServiceBase
         ServiceResponse Update(int id, T entity);
         ServiceResponse Delete(int id);
         T GetById(int id);
+        T GetfFirst();
         IEnumerable<T> GetList();
     }
 }

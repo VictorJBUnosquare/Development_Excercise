@@ -75,5 +75,10 @@ namespace DevelopmentExcercise.ApplicationContext
         {
             return _context.SaveChanges();
         }
+
+        public TEntity GetFirst()
+        {
+            return _context.Set<TEntity>().FirstOrDefault();
+        }
     }
 }

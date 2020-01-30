@@ -23,7 +23,7 @@ namespace DevelopmentExcercise.Tests
         }
 
         [Fact]
-        public void Test1_CreateNewProduct()
+        public void CreateNewProduct()
         {
             using (var scope = _factory.Server.Host.Services.CreateScope())
             {
@@ -44,12 +44,15 @@ namespace DevelopmentExcercise.Tests
         }
         
         [Fact]
-        public void Test2_UpdateExistingProduct()
+        public void UpdateExistingProduct()
         {
             using (var scope = _factory.Server.Host.Services.CreateScope())
             {
                 IProductService _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-                Product sut = _productService.GetById(1);
+                Product sut = _productService.GetfFirst();
+
+                if (sut == null)
+                    CreateNewProduct();
 
                 sut.Name = "Barbie1";
                 sut.Price = Convert.ToDecimal(19.99);
@@ -64,37 +67,48 @@ namespace DevelopmentExcercise.Tests
         }
 
         [Fact]
-        public void Test3_GetProduct()
+        public void GetProduct()
         {
             using (var scope = _factory.Server.Host.Services.CreateScope())
             {
                 IProductService _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-                Product sut = _productService.GetById(1);
+                Product sut = _productService.GetfFirst();
+
+                if (sut == null)
+                    CreateNewProduct();
 
                 Assert.NotNull(sut);
             }
         }
 
         [Fact]
-        public void Test4_GetAllProducts()
+        public void GetAllProducts()
         {
             using (var scope = _factory.Server.Host.Services.CreateScope())
             {
                 IProductService _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-                var products = _productService.GetList();
+                var sut = _productService.GetList();
 
-                Assert.NotNull(products);
+                if (sut == null)
+                    CreateNewProduct();
+
+                Assert.NotNull(sut);
             }
         }
 
         [Fact]
-        public void Test5_DeleteExistingProduct()
+        public void DeleteExistingProduct()
         {
             using (var scope = _factory.Server.Host.Services.CreateScope())
             {
                 IProductService _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
 
-                var sr = _productService.Delete(1);
+                var sut = _productService.GetfFirst();
+
+                if (sut == null)
+                    CreateNewProduct();
+
+                var sr = _productService.Delete(sut.Id);
 
                 Assert.True(sr.Success);
             }
