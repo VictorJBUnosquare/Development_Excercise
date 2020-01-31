@@ -21,7 +21,6 @@ export class ProductComponent{
 
   constructor(public productDialog : MatDialog, public productService : ProductService){
     this.dataSource = new MatTableDataSource();
-    this.loadProducts();
   }
 
   ngAfterViewInit() {
@@ -29,7 +28,11 @@ export class ProductComponent{
     this.dataSource.sort = this.sort;
   }
 
-  loadProducts(){
+  ngOnInit(){
+    this.getProducts();
+  }
+
+  getProducts(){
     this.productService.getProducts().subscribe(response =>{
       if(response.code === 200){
         this.dataSource.data = response.data;
@@ -57,7 +60,7 @@ export class ProductComponent{
       });
 
       productModal.afterClosed().subscribe(() => {
-        this.loadProducts();
+        this.getProducts();
     });
   }
 
@@ -83,7 +86,7 @@ export class ProductComponent{
           });
     
           productModal.afterClosed().subscribe(() => {
-            this.loadProducts();
+            this.getProducts();
         });
       }
       else {
@@ -108,7 +111,7 @@ export class ProductComponent{
       if (result.value) {
         this.productService.deleteProduct(id).subscribe(response =>{
           if(response.code === 200){
-            this.loadProducts();
+            this.getProducts();
             Swal.fire(
               'Deleted!',
               'The product has been deleted.',
@@ -116,7 +119,7 @@ export class ProductComponent{
             )
           }
           else{
-            this.loadProducts();
+            this.getProducts();
             Swal.fire(
               'Error',
               'An error occurred and the product was not deleted',
@@ -125,7 +128,7 @@ export class ProductComponent{
           }
         });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        this.loadProducts();
+        this.getProducts();
         Swal.fire(
           'Cancelled',
           'The product was not deleted',

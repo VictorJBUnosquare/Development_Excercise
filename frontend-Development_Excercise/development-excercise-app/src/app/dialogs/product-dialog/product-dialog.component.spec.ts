@@ -1,25 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProductDialogComponent } from './product-dialog.component';
+import { of } from 'rxjs';
 
 describe('ProductDialogComponent', () => {
   let component: ProductDialogComponent;
   let fixture: ComponentFixture<ProductDialogComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ProductDialogComponent ]
-    })
-    .compileComponents();
-  }));
+  let mockProductService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    mockProductService = jasmine.createSpyObj(['addProduct','saveProduct']);
+    let data = { id : 1 };
+    component = new ProductDialogComponent(null,data,null,mockProductService);
   });
 });

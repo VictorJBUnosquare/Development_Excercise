@@ -20,6 +20,7 @@ export class ProductDialogComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data:any, private formBuilder : FormBuilder,
               private productService : ProductService) { 
                 this.id = data.id;
+                console.log('Service',this.productService);
   }
 
   ngOnInit() {

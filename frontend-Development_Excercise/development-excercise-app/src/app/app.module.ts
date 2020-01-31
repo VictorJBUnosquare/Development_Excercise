@@ -9,9 +9,9 @@ import { NumberDirective } from '../app/directives/numbers-only.directive';
 //Material modules
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
+import {MatTableModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
+import {MatInputModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material';

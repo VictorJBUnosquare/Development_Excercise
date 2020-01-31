@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace DevelopmentExcercise.Tests
 {
-    [TestCaseOrderer("FullNameOfOrderStrategyHere", "OrderStrategyAssemblyName")]
     public class ProductShould : IClassFixture<CustomWebApplicationFactory<DevelopmentExcercise.Api.Startup>>
     {
         public CustomWebApplicationFactory<DevelopmentExcercise.Api.Startup> _factory;
